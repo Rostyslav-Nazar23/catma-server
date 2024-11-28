@@ -1,0 +1,42 @@
+[versions]
+exposed_version = "0.56.0"
+h2_version = "2.3.232"
+koin_version = "3.5.6"
+kotlin_version = "2.0.21"
+ktor_version = "3.0.1"
+ktor_task_scheduling_version = "2.1.1"
+logback_version = "1.4.14"
+
+[libraries]
+exposed-core = { group = "org.jetbrains.exposed", name = "exposed-core", version.ref = "exposed_version" }
+exposed-jdbc = { group = "org.jetbrains.exposed", name = "exposed-jdbc", version.ref = "exposed_version" }
+ktor-task-scheduling-core = { group = "io.github.flaxoos", name = "ktor-server-task-scheduling-core", version.ref = "ktor_task_scheduling_version" }
+ktor-task-scheduling-redis = { group = "io.github.flaxoos", name = "ktor-server-task-scheduling-redis", version.ref = "ktor_task_scheduling_version" }
+ktor-server-core = { group = "io.ktor", name = "ktor-server-core-jvm" }
+ktor-server-sessions = { group = "io.ktor", name = "ktor-server-sessions-jvm" }
+ktor-server-auth = { group = "io.ktor", name = "ktor-server-auth-jvm" }
+ktor-server-content-negotiation = { group = "io.ktor", name = "ktor-server-content-negotiation-jvm" }
+ktor-server-websockets = { group = "io.ktor", name = "ktor-server-websockets-jvm" }
+ktor-server-compression = { group = "io.ktor", name = "ktor-server-compression-jvm" }
+ktor-server-cors = { group = "io.ktor", name = "ktor-server-cors-jvm" }
+ktor-server-host-common = { group = "io.ktor", name = "ktor-server-host-common-jvm" }
+ktor-server-status-pages = { group = "io.ktor", name = "ktor-server-status-pages-jvm" }
+ktor-server-netty = { group = "io.ktor", name = "ktor-server-netty-jvm" }
+ktor-server-config-yaml = { group = "io.ktor", name = "ktor-server-config-yaml-jvm" }
+ktor-server-test-host = { group = "io.ktor", name = "ktor-server-test-host-jvm" }
+ktor-serilization = { group = "io.ktor", name = "ktor-serialization-kotlinx-json-jvm" }
+koin-ktor = { group = "io.insert-koin", name = "koin-ktor", version.ref = "koin_version" }
+koin-logger = { group = "io.insert-koin", name = "koin-logger-slf4j", version.ref = "koin_version" }
+h2-database = { group = "com.h2database", name = "h2", version.ref = "h2_version" }
+qos-logback = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback_version" }
+kotlin-test-unit = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit", version.ref = "kotlin_version" }
+
+[plugins]
+ktor = { id = "io.ktor.plugin", version.ref = "ktor_version" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin_version" }
+
+[bundles]
+exposed = ["exposed-core", "exposed-jdbc"]
+ktor-task-scheduling = ["ktor-task-scheduling-core", "ktor-task-scheduling-redis"]
+ktor-server = ["ktor-server-core", "ktor-server-sessions", "ktor-server-auth", "ktor-server-content-negotiation", "ktor-server-websockets", "ktor-server-compression", "ktor-server-cors", "ktor-server-host-common", "ktor-server-status-pages", "ktor-server-netty", "ktor-server-config-yaml"]
+koin = ["koin-ktor", "koin-logger"]
